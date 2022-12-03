@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="~{layout}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dashboard</title>
+</head>
+
+<body>
+
+<div layout:fragment="content">
+
+    <div class="flash-message" th:if="${notice}">
+        <h3>[[${notice}]]</h3>
+    </div>
+
+    <section>
+        <h2>Create New Post</h2>
+
+        <form action="#" class="new-post-form" method="post" th:action="@{/posts}" th:object="${post}">
+            <div>
+                <label for="post-title">Title</label>
+                <input id="post-title" name="post-title" th:field="*{title}" type="text"/>
+            </div>
+            <div>
+                <label for="post-url">Link</label>
+                <input id="post-url" name="post-url" th:field="*{postUrl}" type="text"/>
+            </div>
+            <button class="btn" type="submit">Create</button>
+        </form>
+    </section>
+
+    <section th:if="${postList.size() > 0}">
+        <h2>Your Posts</h2>
+        <ol>
+            <li th:each="post : ${postList}">
+                <div th:insert="fragments/post-fragment :: post-fragment"></div>
+                <a class="edit-link" th:href="@{/dashboard/edit/{id}(id=${post.id})}">Edit post</a>
+            </li>
+        </ol>
+    </section>
+
+</div>
+
+
+</body>
+</html>

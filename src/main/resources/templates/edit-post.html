@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="~{layout}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Post</title>
+</head>
+
+<body>
+
+<div layout:fragment="content">
+
+    <div class="flash-message" th:if="${notice}">
+        <h3>[[${notice}]]</h3>
+    </div>
+
+    <a th:href="@{/dashboard}"> &larr; Back to dashboard</a>
+    <h2>
+        Edit Post
+    </h2>
+
+    <form action="#" class="edit-post-form" method="post" th:action="@{/posts/{id}(id=${post.id})}" th:object="${post}">
+        <div>
+            <input th:field="*{title}" type="text"/>
+            <span th:text="${#strings.replace(post.postUrl,'http://','')}"></span>
+        </div>
+        <div class="meta" th:if="${post.voteCount == 1}">
+            [[${post.voteCount}]] point by [[${post.userName}]] on
+            <span th:text="${#dates.format(post.postedAt, 'MM-dd-YY')}"></span>
+            |
+            <a th:href="@{/post/{id}(id=${post.id})}" th:if="${post.comments.size() == 1}">[[${post.comments.size()}]]
+                comment</a>
+            <a th:href="@{/post/{id}(id=${post.id})}" th:unless="${post.comments.size() == 1}">[[${post.comments.size()}]]
+                comments</a>
+        </div>
+        <div class="meta" th:unless="${post.voteCount == 1}">
+            [[${post.voteCount}]] points by [[${post.userName}]] on
+            <span th:text="${#dates.format(post.postedAt, 'MM-dd-YY')}"></span>
+            |
+            <a th:href="@{/post/{id}(id=${post.id})}" th:if="${post.comments.size() == 1}">[[${post.comments.size()}]]
+                comment</a>
+            <a th:href="@{/post/{id}(id=${post.id})}" th:unless="${post.comments.size() == 1}">[[${post.comments.size()}]]
+                comments</a>
+        </div>
+        <button type="submit">Edit post title</button>
+        <button class="delete-post-btn" type="button">Delete post</button>
+    </form>
+
+
+    <form action="#" class="comment-form" method="post" th:action="@{/comments/edit}" th:object="${comment}">
+        <div>
+            <input name="postId" th:value="${post.id}" type="hidden"/>
+            <textarea name="comment-body" th:field="*{commentText}"></textarea>
+        </div>
+
+        <div>
+            <button type="submit">add comment</button>
+        </div>
+    </form>
+
+    <div class="comments">
+        <div th:insert="fragments/comment-fragment :: comment-fragment"></div>
+    </div>
+
+    <div th:if="${loggedIn}">
+        <script src="/js/delete-post.js"></script>
+    </div>
+</div>
+
+
+</body>
+</html>
