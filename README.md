@@ -33,6 +33,9 @@ tech-news-java-api/graphs/commit-activity" target="_blank">
 
 ### ✨ [Live Site](https://cc-java-api-brian.herokuapp.com/)
 
+### Application Homepage
+<img width="1438" alt="Screenshot 2023-01-04 at 12 50 09 PM" src="https://user-images.githubusercontent.com/99369106/210618574-bbedf634-8046-4651-b529-ff82911f8c3c.png">
+
 ## Usage
 
 Just an app for proof of concept. Feel free to test out the site by cliking the live site link. You can create an account, create a post, edit a post, delete a post. You can upvote other post and comment on post. You can logout and login. Try it out!!!
