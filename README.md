@@ -20,7 +20,6 @@ tech-news-java-api/graphs/commit-activity" target="_blank">
 ## Table of Contents
 
 - [Demo](#demo-of-project)
-- [Installation](#install)
 - [Usage](#usage)
 - [Meet The Developer](#meet-the-developer)
 - [Contributing](#-contributing)
@@ -34,15 +33,9 @@ tech-news-java-api/graphs/commit-activity" target="_blank">
 
 ### ✨ [Live Site](https://cc-java-api-brian.herokuapp.com/)
 
----
-
-## Install
-
----
-
 ## Usage
 
----
+Just an app for proof of concept. Feel free to test out the site by cliking the live site link. You can create an account, create a post, edit a post, delete a post. You can upvote other post and comment on post. You can logout and login. Try it out!!!
 
 ## Meet the Developer
 
